@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhập Điểm Thi</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        table, th, td { border: 1px solid black; padding: 8px; }
+        th { text-align: left; }
+    </style>
+</head>
+<body>
+<h2>Nhập Điểm Thi</h2>
+<form th:action="@{/diemthi/nhapdiem/{maLopHoc}(maLopHoc=${maLopHoc})}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Mã Sinh Viên</th>
+            <th>Tên Sinh Viên</th>
+            <th>Môn Học</th>
+            <th>Điểm Quá Trình</th>
+            <th>Điểm Cuối Kỳ</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="lopHocSinhVien : ${lopHocSinhViens}">
+            <td th:text="${lopHocSinhVien.sinhVien.maSinhVien}"></td>
+            <td th:text="${lopHocSinhVien.sinhVien.tenSinhVien}"></td>
+            <td th:text="${lopHocSinhVien.lopHoc.monHoc.tenMonHoc}"></td>
+            <td><input type="number" step="0.1" name="diemQuaTrinh" th:value="${lopHocSinhVien.diemThi != null ? lopHocSinhVien.diemThi.diemQuaTrinh : ''}" required /></td>
+            <td><input type="number" step="0.1" name="diemCuoiKy" th:value="${lopHocSinhVien.diemThi != null ? lopHocSinhVien.diemThi.diemCuoiKy : ''}" required /></td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="submit">Lưu Điểm</button>
+</form>
+</body>
+</html>
+

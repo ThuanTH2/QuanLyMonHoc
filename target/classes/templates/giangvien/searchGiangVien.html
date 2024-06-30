@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Search GiangVien</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div>
+    <h1>GiangVien Table</h1>
+    <div>
+        <a th:href="@{/giangvien/create}">Add new</a>
+    </div>
+    <table border="1">
+        <tr>
+            <th>MaGiangVien</th>
+            <th>TenGiangVien</th>
+            <th>Email</th>
+            <th>VaiTro</th>
+            <th>Option</th>
+        </tr>
+        <tr th:each="giangVien : ${giangVienList}">
+            <td th:text="${giangVien.maGiangVien}"></td>
+            <td th:text="${giangVien.tenGiangVien}"></td>
+            <td th:text="${giangVien.account.email}"></td>
+            <td th:text="${giangVien.account.vaiTro}"></td>
+            <td>
+                <a th:href="@{'/giangvien/delete?id=' + ${giangVien.maGiangVien}}">Delete</a>
+                <a th:href="@{'/giangvien/edit?id=' + ${giangVien.maGiangVien}}">Edit</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

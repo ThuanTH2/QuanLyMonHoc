@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm Sinh Viên Vào Lớp Học</title>
+</head>
+<body>
+<h2>Thêm Sinh Viên Vào Lớp Học</h2>
+
+<!-- Form để chọn lớp học và sinh viên -->
+<form th:action="@{/lophocsinhvien/add}" method="post">
+    <label for="maLopHoc">Chọn Lớp Học:</label>
+    <select id="maLopHoc" name="maLopHoc">
+        <option value="">Chọn lớp học</option>
+        <!-- Duyệt danh sách lớp học và hiển thị tên lớp học -->
+        <th:block th:each="lopHoc : ${lopHocList}">
+            <option th:value="${lopHoc.maLopHoc}" th:text="${lopHoc.tenLopHoc}"></option>
+        </th:block>
+    </select>
+
+    <br><br>
+
+    <label for="maSinhVien">Chọn Sinh Viên:</label>
+    <select id="maSinhVien" name="maSinhVien">
+        <option value="">Chọn sinh viên</option>
+        <!-- Duyệt danh sách sinh viên và hiển thị tên sinh viên -->
+        <th:block th:each="sinhVien : ${sinhVienList}">
+            <option th:value="${sinhVien.maSinhVien}" th:text="${sinhVien.tenSinhVien}"></option>
+        </th:block>
+    </select>
+
+    <br><br>
+
+    <input type="submit" value="Thêm Sinh Viên Vào Lớp Học">
+</form>
+
+<!-- Thông báo thành công hoặc lỗi -->
+<div th:if="${param.success}">
+    <p style="color: green;">Thêm sinh viên vào lớp học thành công!</p>
+</div>
+<div th:if="${param.abc}">
+    <p style="color: red;">Đã có Sinh Viên này.</p>
+</div>
+<div th:if="${param.error}">
+    <p style="color: red;">Lỗi! Vui lòng thử lại.</p>
+</div>
+</body>
+</html>

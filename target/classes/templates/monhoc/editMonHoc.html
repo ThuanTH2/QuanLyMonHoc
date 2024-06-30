@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edit MonHoc</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>Edit MonHoc</h1>
+<form method="post" th:action="@{/monhoc/edit}" th:object="${monHoc}">
+    <div>
+        <label>MaMonHoc:</label>
+        <input th:field="*{maMonHoc}" readonly/>
+    </div>
+    <div>
+        <label>TenMonHoc:</label>
+        <input th:field="*{tenMonHoc}" required/>
+    </div>
+    <div>
+        <label>HeSo:</label>
+        <input th:field="*{heSo}" type="number" step="0.01" required/>
+    </div>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

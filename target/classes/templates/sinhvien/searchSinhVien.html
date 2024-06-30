@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Search SinhVien</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div>
+    <h1>SinhVien Table</h1>
+    <div>
+        <a th:href="@{/sinhvien/create}">Add new</a>
+    </div>
+    <table border="1">
+        <tr>
+            <th>MaSinhVien</th>
+            <th>TenSinhVien</th>
+            <th>Email</th>
+            <th>VaiTro</th>
+            <th>Option</th>
+        </tr>
+        <tr th:each="sinhVien : ${sinhVienList}">
+            <td th:text="${sinhVien.maSinhVien}"></td>
+            <td th:text="${sinhVien.tenSinhVien}"></td>
+            <td th:text="${sinhVien.account.email}"></td>
+            <td th:text="${sinhVien.account.vaiTro}"></td>
+            <td>
+                <a th:href="@{'/sinhvien/delete?id=' + ${sinhVien.maSinhVien}}">Delete</a>
+                <a th:href="@{'/sinhvien/edit?id=' + ${sinhVien.maSinhVien}}">Edit</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

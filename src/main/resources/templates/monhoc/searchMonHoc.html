@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Search MonHoc</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div>
+    <h1>MonHoc Table</h1>
+    <div>
+        <a th:href="@{/monhoc/create}">Add new</a>
+    </div>
+    <table border="1">
+        <tr>
+            <th>MaMonHoc</th>
+            <th>TenMonHoc</th>
+            <th>HeSo</th>
+            <th>Option</th>
+        </tr>
+        <tr th:each="monHoc : ${monHocList}">
+            <td th:text="${monHoc.maMonHoc}"></td>
+            <td th:text="${monHoc.tenMonHoc}"></td>
+            <td th:text="${monHoc.heSo}"></td>
+            <td>
+                <a th:href="@{'/monhoc/delete?id=' + ${monHoc.maMonHoc}}">Delete</a>
+                <a th:href="@{'/monhoc/edit?id=' + ${monHoc.maMonHoc}}">Edit</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

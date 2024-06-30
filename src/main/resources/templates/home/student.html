@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Chủ</title>
+</head>
+<body>
+<div>
+    <p>Xin chào Sinh Viên, <span th:text="${maUser}"></span> (Tên: <span th:text="${tenUser}"></span>)</p>
+</div>
+<div>
+    <a th:href="@{/diemthi/list}">Xem Điểm</a>
+</div>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Đăng Xuất">
+</form>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh Sách Điểm Thi</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<h2>Danh Sách Điểm Thi</h2>
+
+<!-- Bảng hiển thị danh sách điểm -->
+<table>
+    <thead>
+    <tr>
+        <th>Mã Sinh Viên</th>
+        <th>Tên Sinh Viên</th>
+        <th>Môn Học</th>
+        <th>Điểm Quá Trình</th>
+        <th>Điểm Cuối Kỳ</th>
+        <th>Điểm Tổng Kết</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Duyệt danh sách điểm và hiển thị thông tin -->
+    <tr th:each="diemThi : ${diemThiList}">
+        <td th:text="${diemThi.lopHocSinhVien.sinhVien.maSinhVien}"></td>
+        <td th:text="${diemThi.lopHocSinhVien.sinhVien.tenSinhVien}"></td>
+        <td th:text="${diemThi.lopHocSinhVien.lopHoc.monHoc.tenMonHoc}"></td>
+        <td th:text="${diemThi.diemQuaTrinh}"></td>
+        <td th:text="${diemThi.diemCuoiKy}"></td>
+        <td th:text="${0.3 * diemThi.diemQuaTrinh + 0.7 * diemThi.diemCuoiKy}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

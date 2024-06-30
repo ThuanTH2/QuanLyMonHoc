@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Search LopHoc</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div>
+    <h1>LopHoc Table</h1>
+    <div>
+        <a th:href="@{/lophoc/create}">Add new</a>
+    </div>
+    <table border="1">
+        <tr>
+            <th>MaLopHoc</th>
+            <th>TenLopHoc</th>
+            <th>MonHoc</th>
+            <th>GiangVien</th>
+            <th>HocKy</th>
+            <th>NamHoc</th>
+            <th>Option</th>
+        </tr>
+        <tr th:each="lopHoc : ${lopHocList}">
+            <td th:text="${lopHoc.maLopHoc}"></td>
+            <td th:text="${lopHoc.tenLopHoc}"></td>
+            <td th:text="${lopHoc.monHoc.tenMonHoc}"></td>
+            <td th:text="${lopHoc.giangVien.tenGiangVien}"></td>
+            <td th:text="${lopHoc.hocKy.tenHocKy}"></td>
+            <td th:text="${lopHoc.hocKy.namHoc}"></td>
+            <td>
+                <a th:href="@{'/lophoc/delete?id=' + ${lopHoc.maLopHoc}}">Delete</a>
+                <a th:href="@{'/lophoc/edit?id=' + ${lopHoc.maLopHoc}}">Edit</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

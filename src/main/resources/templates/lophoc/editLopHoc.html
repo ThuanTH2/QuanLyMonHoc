@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edit LopHoc</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>Edit LopHoc</h1>
+<form method="post" th:action="@{/lophoc/edit}" th:object="${lopHoc}">
+    <div>
+        <label>MaLopHoc:</label>
+        <input th:field="*{maLopHoc}" readonly/>
+    </div>
+    <div>
+        <label>TenLopHoc:</label>
+        <input th:field="*{tenLopHoc}" required/>
+    </div>
+    <div>
+        <label>MonHoc:</label>
+        <select th:field="*{monHoc.maMonHoc}">
+            <option th:each="monHoc : ${monHocs}" th:value="${monHoc.maMonHoc}" th:text="${monHoc.tenMonHoc}"></option>
+        </select>
+    </div>
+    <div>
+        <label>GiangVien:</label>
+        <select th:field="*{giangVien.maGiangVien}">
+            <option th:each="giangVien : ${giangViens}" th:value="${giangVien.maGiangVien}" th:text="${giangVien.tenGiangVien}"></option>
+        </select>
+    </div>
+    <div>
+        <label>HọcKỳ_NămHọc</label>
+        <select th:field="*{hocKy.maHocKy}">
+            <option th:each="hocKy : ${hocKys}" th:value="${hocKy.maHocKy}" th:text="${hocKy.tenHocKy + ' - ' + hocKy.namHoc}"></option>
+        </select>
+    </div>
+
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

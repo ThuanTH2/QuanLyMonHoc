@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh Sách Lớp Học</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<h2>Danh Sách Lớp Học</h2>
+
+<!-- Bảng hiển thị danh sách lớp học -->
+<table>
+    <thead>
+    <tr>
+        <th>Mã Lớp Học</th>
+        <th>Tên Lớp Học</th>
+        <th>Môn Học</th>
+        <th>Xem Điểm</th>
+        <th>Nhập Điểm</th>
+        <th>Thống Kê</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Duyệt danh sách lớp học và hiển thị thông tin -->
+    <tr th:each="lopHoc : ${lopHocList}">
+        <td th:text="${lopHoc.maLopHoc}"></td>
+        <td th:text="${lopHoc.tenLopHoc}"></td>
+        <td th:text="${lopHoc.monHoc.tenMonHoc}"></td>
+        <td><a th:href="@{/diemthi/list/{maLopHoc}(maLopHoc=${lopHoc.maLopHoc})}">Xem Điểm</a></td>
+        <td><a th:href="@{/diemthi/nhapdiem/{maLopHoc}(maLopHoc=${lopHoc.maLopHoc})}">Nhập Điểm</a></td>
+        <td>
+            <a th:href="@{/diemthi/thongke/{maLopHoc}(maLopHoc=${lopHoc.maLopHoc})}">Thống kê</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

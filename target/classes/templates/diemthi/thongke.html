@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Thống kê điểm thi</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h2>Thống kê điểm thi cho lớp: <span th:text="${lopHoc.tenLopHoc}"></span></h2>
+<h3>Môn học: <span th:text="${lopHoc.monHoc.tenMonHoc}"></span></h3>
+
+<table>
+    <thead>
+    <tr>
+        <th>Tổng số sinh viên</th>
+        <th>Số sinh viên qua môn</th>
+        <th>Số sinh viên phải học lại</th>
+        <th>Điểm trung bình lớp</th>
+        <th>Phần trăm sinh viên qua môn</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${totalStudents}"></td>
+        <td th:text="${passedStudents}"></td>
+        <td th:text="${retakeStudents}"></td>
+        <td th:text="${avg}"></td>
+        <td th:text="${pt}+ '%'"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/diemthi/list/{maLopHoc}(maLopHoc=${lopHoc.maLopHoc})}" style="display: block; text-align: center;">Quay lại danh sách điểm</a>
+</body>
+</html>

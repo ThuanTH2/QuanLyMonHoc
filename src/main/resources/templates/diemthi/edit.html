@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit DiemThi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>Edit DiemThi</h1>
+<form method="post" th:action="@{/diemthi/edit}" th:object="${diemThi}">
+    <input type="hidden" th:field="*{maDiemThi}" />
+<!--    <div>-->
+<!--        <label>Mã Sinh Viên:</label>-->
+<!--        <input type="text" th:field="*{diemThi.lopHocSinhVien.sinhVien.maSinhVien}" readonly/>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label>Tên Sinh Viên:</label>-->
+<!--        <input type="text" th:field="*{diemThi.lopHocSinhVien.sinhVien.tenSinhVien}" readonly/>-->
+<!--    </div>-->
+    <div>
+        <label>Điểm Quá Trình:</label>
+        <input type="number" step="0.1" th:field="*{diemQuaTrinh}" required/>
+    </div>
+    <div>
+        <label>Điểm Cuối Kỳ:</label>
+        <input type="number" step="0.1" th:field="*{diemCuoiKy}" required/>
+    </div>
+    <button type="submit">Save</button>
+    <p th:text="${error}" th:if="${error}"></p>
+</form>
+</body>
+</html>

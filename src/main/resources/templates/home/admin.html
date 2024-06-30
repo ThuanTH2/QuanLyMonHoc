@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Chủ</title>
+</head>
+<body>
+<div>
+    CHÀO MỪNG ADMIN
+</div>
+<div>
+    <a th:href="@{/account/list}">List Account</a>
+    <a th:href="@{/giangvien/search}">List Giảng Viên</a>
+    <a th:href="@{/sinhvien/search}">List Sinh Viên</a>
+    <a th:href="@{/monhoc/search}">List Môn Học</a>
+    <a th:href="@{/lophoc/search}">List Lớp Học</a>
+    <a th:href="@{/lophocsinhvien/add}">Thêm sinh Viên Lớp Học</a>
+    <a th:href="@{/diemthi/list}">List Điểm Thi</a>
+    <a th:href="@{/diemthi/SecurityPoint}">Mở khóa điểm</a>
+</div>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Đăng Xuất">
+</form>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Danh sách tài khoản</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>Danh sách tài khoản</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Mã Account</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Vai trò</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="account : ${accounts}">
+        <td th:text="${account.maAccount}"></td>
+        <td th:text="${account.email}"></td>
+        <td th:text="${account.password}"></td>
+        <td th:text="${account.vaiTro}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

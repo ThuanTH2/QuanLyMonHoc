@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Chỉnh sửa Giảng viên</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>Chỉnh sửa Giảng viên</h1>
+<form method="post" th:action="@{/giangvien/edit}" th:object="${giangVien}">
+    <div>
+        <label>Mã giảng viên:</label>
+        <input th:field="*{maGiangVien}" required/>
+    </div>
+    <div>
+        <label>Tên Giảng viên:</label>
+        <input th:field="*{tenGiangVien}" required/>
+    </div>
+    <div>
+        <label>Email:</label>
+        <input  th:field="*{account.email}" type="email" readonly/>
+    </div>
+    <div>
+        <label>Mật khẩu:</label>
+        <input type="password" th:field="*{account.password}" required/>
+    </div>
+    <div>
+        <label>Vai trò:</label>
+        <select th:field="*{account.vaiTro}">
+            <option value="LECTURER">LECTURER</option>
+            <option value="ADMIN">ADMIN</option>
+        </select>
+    </div>
+    <button type="submit">Lưu</button>
+    <p th:text="${error}" th:if="${error}"></p>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh Sách Lớp Học</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            text-align: left;
+        }
+        button {
+            padding: 5px 10px;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+<h2>Danh Sách Lớp Học</h2>
+
+<!-- Bảng hiển thị danh sách lớp học -->
+<table>
+    <thead>
+    <tr>
+        <th>Mã Lớp Học</th>
+        <th>Tên Lớp Học</th>
+        <th>Môn Học</th>
+        <th>Xem Điểm</th>
+        <th>Khóa Điểm</th>
+        <th>Mở Khóa Điểm</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Duyệt danh sách lớp học và hiển thị thông tin -->
+    <tr th:each="lopHoc : ${lopHocList}">
+        <td th:text="${lopHoc.maLopHoc}"></td>
+        <td th:text="${lopHoc.tenLopHoc}"></td>
+        <td th:text="${lopHoc.monHoc.tenMonHoc}"></td>
+        <td><a th:href="@{/diemthi/list/{maLopHoc}(maLopHoc=${lopHoc.maLopHoc})}">Xem Điểm</a></td>
+        <td>
+            <form th:action="@{/diemthi/khoa/{maLopHoc}(maLopHoc=${lopHoc.maLopHoc})}" method="get">
+                <button type="submit">Khóa Điểm</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/diemthi/mokhoa/{maLopHoc}(maLopHoc=${lopHoc.maLopHoc})}" method="get">
+                <button type="submit">Mở Khóa Điểm</button>
+            </form>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
